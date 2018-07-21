@@ -26,9 +26,11 @@ Para rodar a aplicação é necessário ter o Java 8 ou superior instalado.
 Para rodar a aplicação em ambiente de testes execute o comando:
 
 Linux
+
 ./mvnw spring-boot:run
 
 Windows
+
 mvnw.cmd spring-boot:run
 
 ## Testando
@@ -36,16 +38,20 @@ mvnw.cmd spring-boot:run
 Para executar o testes unitários utilize o comando:
 
 Linux
+
 ./mvnw clean test
 
 Windows
+
 mvnw.cmd clean test
 
 ## Gerando o executável da aplicação
 
 Linux
+
 ./mvnw clean package
 
 Windows
+
 mvnw.cmd clean package
 
