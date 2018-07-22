@@ -16,6 +16,10 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class QuotationService {
+	
+	private final long START_DATE = 1501871369;
+	
+	private final long END_DATE = 1501891200;
 
 	/**
 	 * Method responsible for returning the quotation of the period
@@ -26,10 +30,10 @@ public class QuotationService {
 	 *            The End date
 	 * @return A list of bitcoins quotation
 	 */
-	public List<Quotation> getQuotation(final long start, final long end) {
+	public List<Quotation> getQuotation() {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Quotation[]> responseEntity = restTemplate.getForEntity(
-				"https://www.mercadobitcoin.net/api/BTC/trades/" + start + "/" + end + "/", Quotation[].class);
+				"https://www.mercadobitcoin.net/api/BTC/trades/" + START_DATE + "/" + END_DATE + "/", Quotation[].class);
 		List<Quotation> quotations = Arrays.asList(responseEntity.getBody());
 		quotations.forEach(q -> q.setTotal(q.getPrice() * q.getAmount()));
 		return quotations;
@@ -115,9 +119,9 @@ public class QuotationService {
 	 * @param quotations the Quotation List
 	 * @return the period summary
 	 */	
-	public QuotationSummaryDTO getQuotationSummary(final long start, final long end) {
+	public QuotationSummaryDTO getQuotationSummary() {
 
-		final List<Quotation> quotations = getQuotation(start, end);
+		final List<Quotation> quotations = getQuotation();
 		QuotationSummaryDTO summary = null;		
 		
 		if (!quotations.isEmpty()) {

@@ -85,7 +85,7 @@ public class QuotationServiceTests {
 	 */
 	@Test
 	public void getQuotationTest() {
-		assertTrue(service.getQuotation(START_DATE, END_DATE).size() == 966);
+		assertTrue(service.getQuotation().size() == 966);
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class QuotationServiceTests {
 	public void getTop5PurchasesTest() throws JsonParseException, JsonMappingException, IOException {
 		List<Quotation> purchases = mapper.readValue(TOP5PUCHARGES,
 				mapper.getTypeFactory().constructCollectionType(List.class, Quotation.class));
-		List<Quotation> quotations = service.getTop(service.getPurchases(service.getQuotation(START_DATE, END_DATE)),
+		List<Quotation> quotations = service.getTop(service.getPurchases(service.getQuotation()),
 				LIMIT);
 		assertArrayEquals(purchases.toArray(), quotations.toArray());
 	}
@@ -121,7 +121,7 @@ public class QuotationServiceTests {
 	public void getTop5SalesTest() throws JsonParseException, JsonMappingException, IOException {
 		List<Quotation> sales = mapper.readValue(TOP5SALES,
 				mapper.getTypeFactory().constructCollectionType(List.class, Quotation.class));
-		List<Quotation> quotations = service.getTop(service.getSales(service.getQuotation(START_DATE, END_DATE)),
+		List<Quotation> quotations = service.getTop(service.getSales(service.getQuotation()),
 				LIMIT);
 		assertArrayEquals(sales.toArray(), quotations.toArray());
 	}
@@ -132,7 +132,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getSalesAverageTest() {
 		assertTrue(new Double(947.8770733857139)
-				.equals(service.getAverage(service.getSales(service.getQuotation(START_DATE, END_DATE)))));
+				.equals(service.getAverage(service.getSales(service.getQuotation()))));
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getPurchasesAverageTest() {
 		assertTrue(new Double(937.865675872459)
-				.equals(service.getAverage(service.getPurchases(service.getQuotation(START_DATE, END_DATE)))));
+				.equals(service.getAverage(service.getPurchases(service.getQuotation()))));
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getSalesMedian() {
 		assertTrue(new Double(205.21529999999998)
-				.equals(service.getMedian(service.getSales(service.getQuotation(START_DATE, END_DATE)))));
+				.equals(service.getMedian(service.getSales(service.getQuotation()))));
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getPurchasesMedian() {
 		assertTrue(new Double(193.1199916667256)
-				.equals(service.getMedian(service.getPurchases(service.getQuotation(START_DATE, END_DATE)))));
+				.equals(service.getMedian(service.getPurchases(service.getQuotation()))));
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getSalesComputeStandardDeviation() {
 		assertTrue(new Double(3745.5077758750494).equals(
-				service.getStandardDeviation(service.getSales(service.getQuotation(START_DATE, END_DATE)))));
+				service.getStandardDeviation(service.getSales(service.getQuotation()))));
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getPurchasesComputeStandardDeviation() {
 		assertTrue(new Double(2508.530500118819).equals(
-				service.getStandardDeviation(service.getPurchases(service.getQuotation(START_DATE, END_DATE)))));
+				service.getStandardDeviation(service.getPurchases(service.getQuotation()))));
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class QuotationServiceTests {
 	@Test
 	public void getSummaryTest() throws JsonParseException, JsonMappingException, IOException {
 		QuotationSummaryDTO summary = mapper.readValue(SUMMARY, QuotationSummaryDTO.class);
-		QuotationSummaryDTO summaryResult = service.getQuotationSummary(START_DATE, END_DATE);
+		QuotationSummaryDTO summaryResult = service.getQuotationSummary();
 		assertTrue(summary.equals(summaryResult));
 	}
 
