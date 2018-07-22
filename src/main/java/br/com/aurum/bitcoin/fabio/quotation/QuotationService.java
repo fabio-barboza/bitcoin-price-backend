@@ -45,6 +45,7 @@ public class QuotationService {
 	 */
 	public List<Quotation> getSales(final List<Quotation> quotations) {
 		return quotations.stream().filter(q -> q.getType().equals(QuotationType.SELL.getDescription()))
+				.sorted((q1, q2) -> q1.getDate().compareTo(q2.getDate()))
 				.collect(Collectors.toList());
 	}
 
@@ -57,6 +58,7 @@ public class QuotationService {
 	 */
 	public List<Quotation> getPurchases(final List<Quotation> quotations) {
 		return quotations.stream().filter(q -> q.getType().equals(QuotationType.BUY.getDescription()))
+				.sorted((q1, q2) -> q1.getDate().compareTo(q2.getDate()))				
 				.collect(Collectors.toList());
 	}
 
