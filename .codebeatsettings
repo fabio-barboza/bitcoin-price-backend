@@ -1,5 +1,6 @@
 {
   "JAVA": {
-    "TOO_MANY_IVARS": [10, 12, 14, 20]
+    "TOO_MANY_IVARS": [10, 12, 14, 20],
+    "TOO_MANY_FUNCTIONS": [20, 24, 28, 40]    
   }
 }
