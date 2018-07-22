@@ -194,7 +194,8 @@ public class QuotationServiceTests {
 	public void getSummaryTest() throws JsonParseException, JsonMappingException, IOException {
 		QuotationSummaryDTO summary = mapper.readValue(SUMMARY, QuotationSummaryDTO.class);
 		QuotationSummaryDTO summaryResult = service.getQuotationSummary();
-		assertTrue(summary.equals(summaryResult));
+		assertTrue(summary.getTop5Sales().equals(summaryResult.getTop5Sales()));
+		assertTrue(summary.getTop5Purchases().equals(summaryResult.getTop5Purchases()));		
 	}
 
 }
