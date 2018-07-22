@@ -22,12 +22,8 @@ public class QuotationService {
 	private final long END_DATE = 1501891200;
 
 	/**
-	 * Method responsible for returning the quotation of the period
+	 * Method responsible for returning the quotation
 	 * 
-	 * @param start
-	 *            The Start date
-	 * @param end
-	 *            The End date
 	 * @return A list of bitcoins quotation
 	 */
 	public List<Quotation> getQuotation() {
@@ -40,7 +36,7 @@ public class QuotationService {
 	}
 
 	/**
-	 * Method the return the period Sales
+	 * Method the return the Sales
 	 * 
 	 * @param quotations The Quotation List
 	 * @return The Sales list
@@ -51,7 +47,7 @@ public class QuotationService {
 	}
 
 	/**
-	 * Method the return the period Purchases
+	 * Method the return the Purchases
 	 * 
 	 * @param quotations The Quotation List
 	 * @return The purchases list
@@ -62,7 +58,7 @@ public class QuotationService {
 	}
 
 	/**
-	 * Method the return the period Top Sales
+	 * Method the return Top Sales
 	 * 
 	 * @param quotations The Quotation List
 	 * @param limit The limit size
@@ -74,9 +70,9 @@ public class QuotationService {
 	}
 
 	/**
-	 * Method that return the period average
+	 * Method that return the average
 	 * 
-	 * @param quotations quotations The Quotation List
+	 * @param quotations The Quotation List
 	 * @return the average
 	 */
 	public Double getAverage(final List<Quotation> quotations) {
@@ -84,7 +80,7 @@ public class QuotationService {
 	}
 
 	/**
-	 * Method that return the period median
+	 * Method that return the median
 	 * 
 	 * @param quotations the Quotation List
 	 * @return the median
@@ -114,7 +110,7 @@ public class QuotationService {
 	}
 	
 	/**
-	 * Method that return the period Summary
+	 * Method that return the Summary
 	 * 
 	 * @param quotations the Quotation List
 	 * @return the period summary

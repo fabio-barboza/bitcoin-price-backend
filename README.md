@@ -9,15 +9,11 @@ Ela foi contruida utilizando Java 8 e Spring Boot 2.X
 
 API pode ser acessada em uma instâcia do AWS EC2 através da URL:
 
+http://ec2-13-59-22-163.us-east-2.compute.amazonaws.com:8080/
 
+Documentação Swagger:
 
-
-## Documentação
-
-Foi criada uma documentação utilizando a API Swagger.
-Após inicializar a aplicação a documentação via Swagger estará disponivel através da URL:
-
-http://localhost:8080/swagger-ui.html
+http://ec2-13-59-22-163.us-east-2.compute.amazonaws.com:8080/swagger-ui.html
 
 ## Rodando a aplicação
 
@@ -32,6 +28,13 @@ Linux
 Windows
 
 mvnw.cmd spring-boot:run
+
+## Documentação Swagger Local
+
+Foi criada uma documentação utilizando a API Swagger.
+Após inicializar a aplicação a documentação via Swagger estará disponivel através da URL:
+
+http://localhost:8080/swagger-ui.html
 
 ## Testando
 

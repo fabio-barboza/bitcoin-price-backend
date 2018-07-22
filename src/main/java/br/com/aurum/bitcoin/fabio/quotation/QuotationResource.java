@@ -25,7 +25,7 @@ public class QuotationResource {
 	private QuotationService service;
 	
 	/**
-	 * Method responsible for returning the bitcoin quotation Summary of the period
+	 * Method responsible for returning the bitcoin quotation Summary
 	 * 
 	 * @return A Summary of bitcoin transactions.
 	 */
@@ -36,7 +36,7 @@ public class QuotationResource {
 	}	
 	
 	/**
-	 * Method responsible for returning a top 5 bitcoin sales of the period
+	 * Method responsible for returning a top 5 bitcoin sales
 	 * 
 	 * @return A list of top 5 bitcoin sales transactions.
 	 */
@@ -47,7 +47,7 @@ public class QuotationResource {
 	}
 	
 	/**
-	 * Method responsible for returning the average sales of the period
+	 * Method responsible for returning the average sales
 	 * 
 	 * @return The average sales.
 	 */
@@ -58,7 +58,7 @@ public class QuotationResource {
 	}
 	
 	/**
-	 * Method responsible for returning the median sales of the period
+	 * Method responsible for returning the median sales
 	 * 
 	 * @return The median sales.
 	 */
@@ -69,7 +69,7 @@ public class QuotationResource {
 	}	
 	
 	/**
-	 * Method responsible for returning the Standard Deviation sales of the period
+	 * Method responsible for returning the Standard Deviation sales
 	 * 
 	 * @return The Standard Deviation sales.
 	 */
@@ -80,7 +80,7 @@ public class QuotationResource {
 	}		
 	
 	/**
-	 * Method responsible for returning a top 5 bitcoin purchases of the period
+	 * Method responsible for returning a top 5 bitcoin purchases
 	 * 
 	 * @return A list of top 5 bitcoin purchases transactions.
 	 */	
@@ -91,7 +91,7 @@ public class QuotationResource {
 	}	
 	
 	/**
-	 * Method responsible for returning the average purchases of the period
+	 * Method responsible for returning the average purchases
 	 * 
 	 * @return The average purchases.
 	 */
@@ -102,7 +102,7 @@ public class QuotationResource {
 	}
 	
 	/**
-	 * Method responsible for returning the median purchases of the period
+	 * Method responsible for returning the median purchases
 	 * 
 	 * @return The median purchases.
 	 */
@@ -113,7 +113,7 @@ public class QuotationResource {
 	}	
 	
 	/**
-	 * Method responsible for returning the Standard Deviation purchases of the period
+	 * Method responsible for returning the Standard Deviation purchases
 	 * 
 	 * @return The Standard Deviation purchases.
 	 */
