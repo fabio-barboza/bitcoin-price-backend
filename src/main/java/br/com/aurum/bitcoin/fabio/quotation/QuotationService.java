@@ -16,9 +16,9 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class QuotationService {
-	
+
 	private final long START_DATE = 1501871369;
-	
+
 	private final long END_DATE = 1501891200;
 
 	/**
@@ -29,7 +29,8 @@ public class QuotationService {
 	public List<Quotation> getQuotation() {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Quotation[]> responseEntity = restTemplate.getForEntity(
-				"https://www.mercadobitcoin.net/api/BTC/trades/" + START_DATE + "/" + END_DATE + "/", Quotation[].class);
+				"https://www.mercadobitcoin.net/api/BTC/trades/" + START_DATE + "/" + END_DATE + "/",
+				Quotation[].class);
 		List<Quotation> quotations = Arrays.asList(responseEntity.getBody());
 		quotations.forEach(q -> q.setTotal(q.getPrice() * q.getAmount()));
 		return quotations;
@@ -38,7 +39,8 @@ public class QuotationService {
 	/**
 	 * Method the return the Sales
 	 * 
-	 * @param quotations The Quotation List
+	 * @param quotations
+	 *            The Quotation List
 	 * @return The Sales list
 	 */
 	public List<Quotation> getSales(final List<Quotation> quotations) {
@@ -49,7 +51,8 @@ public class QuotationService {
 	/**
 	 * Method the return the Purchases
 	 * 
-	 * @param quotations The Quotation List
+	 * @param quotations
+	 *            The Quotation List
 	 * @return The purchases list
 	 */
 	public List<Quotation> getPurchases(final List<Quotation> quotations) {
@@ -60,8 +63,10 @@ public class QuotationService {
 	/**
 	 * Method the return Top Sales
 	 * 
-	 * @param quotations The Quotation List
-	 * @param limit The limit size
+	 * @param quotations
+	 *            The Quotation List
+	 * @param limit
+	 *            The limit size
 	 * @return The limit sales
 	 */
 	public List<Quotation> getTop(final List<Quotation> quotations, int limit) {
@@ -72,7 +77,8 @@ public class QuotationService {
 	/**
 	 * Method that return the average
 	 * 
-	 * @param quotations The Quotation List
+	 * @param quotations
+	 *            The Quotation List
 	 * @return the average
 	 */
 	public Double getAverage(final List<Quotation> quotations) {
@@ -82,7 +88,8 @@ public class QuotationService {
 	/**
 	 * Method that return the median
 	 * 
-	 * @param quotations the Quotation List
+	 * @param quotations
+	 *            the Quotation List
 	 * @return the median
 	 */
 	public Double getMedian(final List<Quotation> quotations) {
@@ -94,7 +101,8 @@ public class QuotationService {
 	/**
 	 * Method that return the Standard Deviation
 	 * 
-	 * @param quotations the Quotation List
+	 * @param quotations
+	 *            the Quotation List
 	 * @return the Standard Deviation
 	 */
 	public Double getStandardDeviation(final List<Quotation> quotations) {
@@ -108,37 +116,41 @@ public class QuotationService {
 
 		return Math.sqrt(rawSum / (quotations.size() - 1));
 	}
-	
+
 	/**
 	 * Method that return the Summary
 	 * 
-	 * @param quotations the Quotation List
+	 * @param quotations
+	 *            the Quotation List
 	 * @return the period summary
-	 */	
+	 */
 	public QuotationSummaryDTO getQuotationSummary() {
 
 		final List<Quotation> quotations = getQuotation();
-		QuotationSummaryDTO summary = null;		
-		
-		if (!quotations.isEmpty()) {
-			List<Quotation> sales = getSales(quotations);
-			List<Quotation> purchases = getPurchases(quotations);
-			
-			summary = new QuotationSummaryDTO();
-			
-			summary.setTop5Sales(getTop(sales, 5));
-			summary.setTop5Purchases(getTop(purchases, 5));	
-			
-			summary.setAverageSales(getAverage(sales));
-			summary.setAveragePurchases(getAverage(purchases));	
-			
-			summary.setMedianSales(getMedian(sales));
-			summary.setMedianPurchases(getMedian(purchases));
-			
-			summary.setStandardDeviationSales(getStandardDeviation(sales));
-			summary.setStandardDeviationPurchases(getStandardDeviation(purchases));			
+
+		if (quotations.isEmpty()) {
+			return null;
 		}
 		
+		QuotationSummaryDTO summary = null;		
+
+		List<Quotation> sales = getSales(quotations);
+		List<Quotation> purchases = getPurchases(quotations);
+
+		summary = new QuotationSummaryDTO();
+
+		summary.setTop5Sales(getTop(sales, 5));
+		summary.setTop5Purchases(getTop(purchases, 5));
+
+		summary.setAverageSales(getAverage(sales));
+		summary.setAveragePurchases(getAverage(purchases));
+
+		summary.setMedianSales(getMedian(sales));
+		summary.setMedianPurchases(getMedian(purchases));
+
+		summary.setStandardDeviationSales(getStandardDeviation(sales));
+		summary.setStandardDeviationPurchases(getStandardDeviation(purchases));
+
 		return summary;
 	}
 }
